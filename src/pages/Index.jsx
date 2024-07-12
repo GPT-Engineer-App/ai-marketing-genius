@@ -1,7 +1,14 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleSignUpClick = () => {
+    navigate("/onboarding");
+  };
+
   return (
     <div className="space-y-16">
       {/* Hero Section */}
@@ -9,7 +16,7 @@ const Index = () => {
         <div className="container mx-auto">
           <h1 className="text-5xl font-bold mb-4">Transform Your Brand with AI-Driven Marketing</h1>
           <p className="text-xl mb-8">Leverage AI to create compelling brand messages and marketing strategies</p>
-          <Button variant="primary" size="lg">Get Started</Button>
+          <Button variant="primary" size="lg" onClick={handleSignUpClick}>Get Started</Button>
         </div>
       </section>
 
@@ -58,7 +65,7 @@ const Index = () => {
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Marketing?</h2>
           <p className="text-xl mb-8">Sign up now to start creating compelling marketing content with AI.</p>
-          <Button variant="primary" size="lg">Sign Up Now</Button>
+          <Button variant="primary" size="lg" onClick={handleSignUpClick}>Sign Up Now</Button>
         </div>
       </section>
     </div>
