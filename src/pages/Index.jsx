@@ -1,3 +1,4 @@
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
@@ -12,27 +13,34 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Key Features */}
+      {/* Main Tabs */}
       <section className="py-20">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-12">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <img src="/placeholder.svg" alt="placeholder" className="mx-auto object-cover w-16 h-16 mb-4" />
-              <h3 className="text-2xl font-semibold mb-2">Brand and Product Messages</h3>
-              <p>Create clear and compelling brand messages tailored to your audience.</p>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <img src="/placeholder.svg" alt="placeholder" className="mx-auto object-cover w-16 h-16 mb-4" />
-              <h3 className="text-2xl font-semibold mb-2">Generate Marketing Content</h3>
-              <p>Generate Facebook ads, email marketing copy, and social media content effortlessly.</p>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <img src="/placeholder.svg" alt="placeholder" className="mx-auto object-cover w-16 h-16 mb-4" />
-              <h3 className="text-2xl font-semibold mb-2">AI-enhanced Data and Customer Analytics</h3>
-              <p>Gain insights into your customer data to make informed marketing decisions.</p>
-            </div>
-          </div>
+        <div className="container mx-auto">
+          <Tabs defaultValue="brand-messages">
+            <TabsList className="flex justify-center mb-8">
+              <TabsTrigger value="brand-messages" className="px-4 py-2">Brand and Product Messages</TabsTrigger>
+              <TabsTrigger value="generate-marketing" className="px-4 py-2">Generate Marketing</TabsTrigger>
+              <TabsTrigger value="analytics" className="px-4 py-2">AI-enhanced Data and Customer Analytics</TabsTrigger>
+            </TabsList>
+            <TabsContent value="brand-messages">
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <h3 className="text-2xl font-semibold mb-2">Brand and Product Messages</h3>
+                <p>Create clear and compelling brand messages tailored to your audience.</p>
+              </div>
+            </TabsContent>
+            <TabsContent value="generate-marketing">
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <h3 className="text-2xl font-semibold mb-2">Generate Marketing Content</h3>
+                <p>Generate Facebook ads, email marketing copy, and social media content effortlessly.</p>
+              </div>
+            </TabsContent>
+            <TabsContent value="analytics">
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <h3 className="text-2xl font-semibold mb-2">AI-enhanced Data and Customer Analytics</h3>
+                <p>Gain insights into your customer data to make informed marketing decisions.</p>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
