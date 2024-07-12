@@ -4,6 +4,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import FacebookLogin from "react-facebook-login-lite";
+import GoogleLogin from "react-google-login";
+import ReactGA from "react-ga";
 
 const Onboarding = () => {
   const navigate = useNavigate();
@@ -30,7 +33,7 @@ const Onboarding = () => {
       return response.json();
     },
     onSuccess: () => {
-      navigate("/"); // Redirect to home or another page after successful submission
+      navigate("/platform"); // Redirect to main platform after successful submission
     },
   });
 
@@ -46,6 +49,19 @@ const Onboarding = () => {
     e.preventDefault();
     mutation.mutate(formData);
   };
+
+  const responseFacebook = (response) => {
+    console.log(response);
+    // Handle Facebook login response
+  };
+
+  const responseGoogle = (response) => {
+    console.log(response);
+    // Handle Google login response
+  };
+
+  ReactGA.initialize("UA-XXXXXXXXX-X"); // Replace with your Google Analytics tracking ID
+  ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
     <div className="container mx-auto py-20">
@@ -103,6 +119,24 @@ const Onboarding = () => {
           Submit
         </Button>
       </form>
+      <div className="flex justify-center mt-8 space-x-4">
+        <FacebookLogin
+          appId="YOUR_FACEBOOK_APP_ID" // Replace with your Facebook App ID
+          autoLoad={false}
+          fields="name,email,picture"
+          callback={responseFacebook}
+          cssClass="btn btn-primary"
+          icon="fa-facebook"
+        />
+        <GoogleLogin
+          clientId="YOUR_GOOGLE_CLIENT_ID" // Replace with your Google Client ID
+          buttonText="Login with Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={"single_host_origin"}
+          className="btn btn-danger"
+        />
+      </div>
     </div>
   );
 };
