@@ -16,6 +16,7 @@ const Onboarding = () => {
 
   const mutation = useMutation({
     mutationFn: async (data) => {
+      console.log("Submitting data:", data); // Debug log
       // Replace with your API endpoint
       const response = await fetch("/api/onboarding", {
         method: "POST",
@@ -30,6 +31,7 @@ const Onboarding = () => {
       return response.json();
     },
     onSuccess: () => {
+      console.log("Submission successful"); // Debug log
       navigate("/"); // Redirect to home or another page after successful submission
     },
     onError: (error) => {
@@ -48,6 +50,7 @@ const Onboarding = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form submitted with data:", formData); // Debug log
     mutation.mutate(formData);
   };
 
