@@ -32,6 +32,10 @@ const Onboarding = () => {
     onSuccess: () => {
       navigate("/"); // Redirect to home or another page after successful submission
     },
+    onError: (error) => {
+      console.error("Error submitting onboarding data:", error);
+      alert("There was an error submitting your data. Please try again.");
+    },
   });
 
   const handleChange = (e) => {
